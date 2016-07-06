@@ -1,0 +1,90 @@
+<ion-view view-title="Schedule" ng-controller="FoodTruckScheduleCtrl as vm">
+
+    <!--<ion-navbar class="hide-border">
+
+
+        <button ng-click="vm.addSchedule()">
+            <i class="icon ion-ios-plus-empty"></i>
+        </button>
+    </ion-navbar>-->
+    
+
+
+    <ion-content>
+
+        <ion-list ng-repeat="dailySchedule in vm.dailySchedules">
+
+            <div class="item item-divider">
+                <ion-icon class="ion-ios-calendar-outline" item-left></ion-icon>
+                {{dailySchedule.header}}
+            </div>
+
+            <ion-item ng-repeat="schedule in dailySchedule.schedules">
+                <h3>{{schedule.locationName}}</h3>
+                <p>
+                    {{vm.getLocalTimeString(schedule.startTime)}} &mdash; {{vm.getLocalTimeString(schedule.endTime)}}
+                </p>
+
+                <ion-option-button class="button-positive" ng-click="vm.editSchedule(schedule)">
+                    Edit
+                </ion-option-button>
+
+                <ion-option-button class="button-assertive" ng-click="vm.removeSchedule(schedule)">
+                    Delete
+                </ion-option-button>
+
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+    
+    
+    <script id="addScheduleModal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header ">
+          <h1 class="title" ng-if="!vm.newSchedule.isEdit">Add Schedule</h1>
+          <h1 class="title" ng-if="vm.newSchedule.isEdit">Edit Schedule</h1>
+          
+          <button class="button  button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label" >Date</span>
+              <input ng-model="vm.newSchedule.date" type="date" ng-change="vm.fieldChanged()">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Start Time</span>
+              <input ng-model="vm.newSchedule.startTime" type="time" ng-change="vm.fieldChanged()">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">End Time</span>
+              <input ng-model="vm.newSchedule.endTime" type="time" ng-change="vm.fieldChanged()">
+            </label>
+            
+             <label class="item item-input">
+              <span class="input-label">Location Name</span>
+              <input ng-model="vm.newSchedule.locationName" type="text" ng-change="vm.fieldChanged()">
+            </label>
+            
+             <label class="item item-input">
+              <span class="input-label">Address</span>
+              <input ng-model="vm.newSchedule.address" type="text" ng-change="vm.onAddressChange()">
+            </label>
+            
+             <label class="item item-input">
+              <span class="input-label">Verified Address</span>
+              <input value="{{vm.newSchedule.fullAddress}}" type="text"  disabled="true">
+            </label>
+            
+            <button class="button button-full button-positive" ng-click="vm.addSchedule()" ng-disabled="!vm.newSchedule.isValid">
+                <div ng-if="!vm.newSchedule.isEdit"> Create </div>
+                <div ng-if="vm.newSchedule.isEdit"> Update </div>
+                
+            </button>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+    
+</ion-view>

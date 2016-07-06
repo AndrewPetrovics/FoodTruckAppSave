@@ -1,0 +1,64 @@
+<ion-view view-title="{{vm.foodTruck.name}}" ng-controller="FoodTruckDetailsCtrl as vm">
+  <ion-content>
+
+    <div class="text-center foodTruck-detail">
+      <img src="{{vm.foodTruck.profileImage}}"><br>
+
+
+      <button class="button button-small icon ion-social-facebook social-button" ng-click="vm.openLink(vm.foodTruck.facebookUrl)"
+        ng-show="vm.foodTruck.facebookUrl != null" style="color:#3b5998"></button>
+      <button class="button button-small icon ion-social-twitter social-button" ng-click="vm.openLink(vm.foodTruck.twitterUrl)"
+        ng-show="vm.foodTruck.twitterUrl != null" style="color:#1da1f2;"></button>
+      <button class="button button-small icon ion-ios-world social-button" ng-click="vm.openLink(vm.foodTruck.websiteUrl)" ng-show="vm.foodTruck.websiteUrl != null"></button>
+    </div>
+
+
+    <p>{{foodTruck.about}}</p>
+
+    <div class="list">
+
+      <div class="item item-divider">
+        Schedule
+      </div>
+
+      <a class="item" ui-sref="app.foodTruckSchedule({foodTruckId: vm.foodTruck.id})">
+        <ion-icon class="ion-ios-calendar-outline" item-left></ion-icon>
+        View Schedule
+      </a>
+
+      <div class="item item-divider">
+        Menu
+      </div>
+
+      <a class="item" ui-sref="app.foodTruckMenu({foodTruckId: vm.foodTruck.id})">
+        <ion-icon class='ion-ios-paper-outline' item-left></ion-icon>
+        View Menu
+      </a>
+
+      <div class="item item-divider" ng-if="vm.foodTruck.photos.length >= 1">
+        Photos
+      </div>
+      
+       <ion-slide-box on-slide-changed="slideChanged(index)" ng-if="vm.foodTruck.photos.length >= 1">
+          <ion-slide ng-if="vm.foodTruck.photos.length > 0">
+              <img src="{{vm.foodTruck.photos[0]}}" style="height:250px">
+          </ion-slide>
+          <ion-slide ng-if="vm.foodTruck.photos.length > 1">
+            <img src="{{vm.foodTruck.photos[1]}}" style="height:250px">
+          </ion-slide>
+          <ion-slide ng-if="vm.foodTruck.photos.length > 2">
+            <img src="{{vm.foodTruck.photos[2]}}" style="height:250px">
+          </ion-slide>
+        </ion-slide-box>
+
+
+     
+
+
+    </div>
+    
+   
+
+
+  </ion-content>
+</ion-view>

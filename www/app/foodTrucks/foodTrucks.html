@@ -1,0 +1,45 @@
+<ion-view hide-back-button="true" view-title="Food Trucks" ng-controller="FoodTrucksCtrl as vm">
+    <ion-content>
+        <div class="list card" ng-repeat="foodTruck in vm.foodTrucks" ui-sref="app.foodTruckDetails({foodTruckId: foodTruck.id})">
+
+            <div class="item item-thumbnail-left">
+                <img src="{{foodTruck.profileImage}}">
+                <h2>{{foodTruck.name}}</h2>
+                <p style="white-space: normal">{{foodTruck.description}}</p>
+                 <span class="badge badge-positive" ng-if="vm.getCurrentStatus(foodTruck) != null">{{vm.getCurrentStatus(foodTruck)}}</span>
+            </div>
+
+            <!--<div class="item item-body">
+                <img class="full-image" src="delorean.jpg">
+                <p>
+                    This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting
+                    of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.
+                </p>
+                <p>
+                    <a href="#" class="subdued">1 Like</a>
+                    <a href="#" class="subdued">5 Comments</a>
+                </p>
+            </div>-->
+
+        </div>
+
+        <!--<ion-card ng-repeat="foodTruck in vm.foodTrucks" ng-click="goToFoodTruckDetail(foodTruck)">
+            <ion-card-header>
+                <ion-item class="item item-avatar">
+
+                    <ion-thumbnail item-left>
+                        <img src="{{foodTruck.profileImage}}">
+                    </ion-thumbnail>
+
+
+                    <h2>{{foodTruck.name}}</h2>
+                    <p>{{foodTruck.description}}</p>
+                    <ion-badge>{{vm.getCurrentStatus(foodTruck)}}</ion-badge>
+
+                </ion-item>
+            </ion-card-header>
+
+
+        </ion-card>-->
+    </ion-content>
+</ion-view>

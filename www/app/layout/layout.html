@@ -1,0 +1,78 @@
+<ion-side-menus enable-menu-with-back-views="false" ng-controller="LayoutCtrl as vm">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-ios-plus-empty" ng-if="$root.showAddButton" ng-click="modal.show()">
+        </button>
+        <button class="button button-icon button-clear ion-ios-plus-empty" ng-if="$root.showAddMenuButton" ng-click="menuModal.show()">
+        </button>
+      </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+    <ion-tabs class="tabs-icon-top">
+      <ion-tab title="Food Trucks" icon="ion-android-bus" href="app/foodTrucks">
+        <ion-nav-view name="tab-foodTrucks"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="Map" icon="ion-map" href="app/map">
+        <ion-nav-view name="tab-map"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="Schedule" icon="ion-calendar" href="app/schedule">
+        <ion-nav-view name="tab-schedule"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="About" icon="ion-ios-information-outline" href="app/about">
+        <ion-nav-view name="tab-about"></ion-nav-view>
+      </ion-tab>
+    </ion-tabs>
+
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">Menu</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+
+        <div class="item item-divider">
+          <ion-icon class="ion-ios-calendar-outline" item-left></ion-icon>
+          Navigate
+        </div>
+
+        <ion-item menu-close href="#/app/foodTrucks">
+          <i class="icon ion-android-bus"></i> Trucks
+        </ion-item>
+        <ion-item menu-close href="#/app/map">
+          <i class="icon ion-map"></i> Map
+        </ion-item>
+        <ion-item menu-close href="#/app/schedule">
+          <i class="icon ion-calendar"></i> Schedule
+        </ion-item>
+        <ion-item menu-close href="#/app/about">
+          <i class="icon ion-ios-information-outline"></i> About
+        </ion-item>
+        
+        <div class="item item-divider">
+          <ion-icon class="ion-ios-calendar-outline" item-left></ion-icon>
+          Account
+        </div>
+        
+        <ion-item menu-close ng-click="vm.logout()">
+          <i class="icon ion-log-out"></i> Logout
+        </ion-item>
+        
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

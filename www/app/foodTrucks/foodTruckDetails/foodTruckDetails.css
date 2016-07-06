@@ -1,0 +1,33 @@
+.foodTruck-detail img {
+  max-width: 140px;
+  border-radius: 50%;
+}
+
+.foodTruck-detail p {
+  color: #60646B;
+}
+
+.slide-image {
+    /*max-height: 50%;
+    max-width: 60%;
+    margin: 36px 0;*/
+  }
+  
+ .social-button{
+     border-radius:3px;
+     margin:5px;
+     padding:0px;
+ }
+ 
+ .slider-slide {
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+
+
+  
+

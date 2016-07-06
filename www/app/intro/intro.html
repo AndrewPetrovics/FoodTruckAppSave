@@ -1,0 +1,47 @@
+<ion-view view-title="Intro" ng-controller="IntroCtrl as vm">
+
+    
+
+    <ion-content scroll="false">
+        
+        <a class="button button-clear button-positive " style="left: 85%" ng-click="vm.goToLogin()"> Skip </a>
+        
+        <ion-slide-box on-slide-changed="vm.slideChanged(index)" style="height:100%">
+            <ion-slide class="slide text-center">
+                <img src='img/FoodzIcon.png' class="intro-slide-image" width=225>
+                <h3 class="slide-title">Welcome to Foodz!</h3>
+                <p>The <b>Foodz App</b> connects you to all of Birmingham's local food trucks.</p>
+
+
+            </ion-slide>
+
+            <ion-slide class="slide text-center">
+                <img class="intro-slide-image" src='img/mapIcon.png'>
+                <h3 class="slide-header">Locations</h3>
+                <p>Always know where food trucks are serving at any given moment.</p>
+            </ion-slide>
+
+            <ion-slide class="slide text-center">
+                <img class="intro-slide-image" src='img/calendarIcon.png'>
+                <h3 class="slide-header">Schedule</h3>
+                <p>Wanna plan ahead? View your favorite food trucks' schedule at any time.</p>
+            </ion-slide>
+
+            <ion-slide class="slide text-center">
+                <img class="intro-slide-image" src='img/foodTruckClip.jpg'>
+                <h3 class="slide-header">Ready to get started? </h3>
+                <a class="button button-large button-positive  icon-right ion-arrow-right-c" ng-click="vm.goToLogin()">
+                    Continue
+                </a>
+            </ion-slide>
+
+            <!--<ion-slide class="slide">
+                <h3 class="slide-header">Get started now</h3>
+                <a class="facebook-sign-in button button-block" ng-click="vm.loginUser()">
+              Log in with Facebook
+            </a>
+            </ion-slide>-->
+
+        </ion-slide-box>
+    </ion-content>
+</ion-view>

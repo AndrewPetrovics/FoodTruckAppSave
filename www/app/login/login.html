@@ -1,0 +1,26 @@
+<ion-view view-title="Login" ng-controller="LoginCtrl as vm">
+    <ion-content>
+        <div class="padding text-center">
+            
+             <img src='img/FoodzIcon.png' class="intro-slide-image " width=225>
+             
+              <p style="color: red">{{vm.errorMessage}}</p>
+
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" placeholder="Email" ng-model="vm.loginInfo.email" ng-change="vm.onFieldChange()">
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="Password" ng-model="vm.loginInfo.password"" ng-change="vm.onFieldChange()">
+                </label>
+            </div>
+            <button class="button button-block button-positive" ng-click="vm.loginWithEmail()" >Login</button>
+            
+            <button class="button button-block" ng-click="vm.goToSignup()">Don't have an account? <b>Sign up now</b></button>
+
+            <!--<button class="button button-block button-assertive" ng-click="vm.loginWithFacebbok()" style="background-color:#3b5998">
+        Log in with Facebook
+      </button>-->
+        </div>
+    </ion-content>
+</ion-view>

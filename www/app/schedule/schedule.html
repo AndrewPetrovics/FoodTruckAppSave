@@ -1,0 +1,21 @@
+<ion-view hide-back-button="true" view-title="Schedule" ng-controller="ScheduleCtrl as vm">
+    <ion-content>
+
+        <ion-list ng-repeat="groupSchedule in vm.groupedSchedules">
+
+            <div class="item item-divider">
+                <ion-icon class="ion-ios-calendar-outline" item-left></ion-icon>
+                {{groupSchedule.header}}
+            </div>
+
+
+                <a class="item item-avatar" ng-repeat="schedule in groupSchedule.schedules">
+                    <img src="{{schedule.foodTruck.profileImage}}">
+                    <h3>{{schedule.foodTruck.name}}</h3>
+                    <p> {{schedule.locationName}} </p>
+                    <p>{{vm.getLocalTimeString(schedule.startTime)}} - {{vm.getLocalTimeString(schedule.endTime)}}</p>
+                </a>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,82 @@
+<ion-view view-title="Menu" ng-controller="FoodTruckMenuCtrl as vm">
+    <ion-content>
+        <ion-list ng-repeat="subMenu in vm.foodTruck.menu">
+
+            <div class="item item-divider" ng-if="subMenu.items != null && subMenu.items.length > 0">
+                {{subMenu.category}}
+            </div>
+
+
+            <ion-item ng-repeat="item in subMenu.items">
+                {{item.name}}
+                <p style=" white-space: normal">{{item.description}}</p>
+                <p style="float:right;">{{item.price | currency}}</p>
+
+                <ion-option-button class="button-positive" ng-click="vm.editMenuItem(item, subMenu.key)">
+                    <!--<i class="icon ion-edit"></i>-->
+                    Edit
+                </ion-option-button>
+
+                <ion-option-button class="button-assertive" ng-click="vm.removeMenuItem(subMenu.key, item)">
+                    <!--<i class="icon ion-trash-a"></i>-->
+                    Delete
+                </ion-option-button>
+            </ion-item>
+
+
+
+        </ion-list>
+
+    </ion-content>
+
+    <script id="addMenuModal.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar class="bar bar-header ">
+                <h1 class="title" ng-if="!vm.newMenu.isEdit">Add Menu</h1>
+                <h1 class="title" ng-if="vm.newMenu.isEdit">Edit Menu</h1>
+
+                <button class="button  button-primary" ng-click="menuModal.hide()">Cancel</button>
+            </ion-header-bar>
+            
+            <ion-content class="padding">
+                <div class="list">
+
+                    <label class="item item-input item-select">
+                        <div class="input-label">Category</div>
+                        <select ng-model="vm.newMenu.category" ng-change="vm.fieldChanged()">
+                            <option ng-repeat="cat in vm.foodTruck.menu" value="{{cat.key}}">{{cat.category}}</option>
+                            <option value="newCat"> + Add New Category</option>
+                        </select>
+                    </label>
+                    
+                    <label ng-if="vm.newMenu.category == 'newCat'">
+                         <span class="input-label"> New Category</span>
+                        <input ng-model="vm.newMenu.newCategory" type="text" ng-change="vm.fieldChanged()">
+                    </label>
+
+                    <label class="item item-input">
+                         <span class="input-label"> Name</span>
+                        <input ng-model="vm.newMenu.name" type="text" ng-change="vm.fieldChanged()">
+                    </label>
+
+                    <label class="item item-input">
+              <span class="input-label">Description</span>
+              <input ng-model="vm.newMenu.description" type="text" ng-change="vm.fieldChanged()">
+            </label>
+
+                    <label class="item item-input">
+              <span class="input-label">Price</span>
+              <input ng-model="vm.newMenu.price" type="number" ng-change="vm.fieldChanged()">
+            </label>
+
+                    <button class="button button-full button-positive" ng-click="vm.addMenu()" ng-disabled="!vm.newMenu.isValid">
+                <div ng-if="!vm.newMenu.isEdit"> Create </div>
+                <div ng-if="vm.newMenu.isEdit"> Update </div>
+                
+            </button>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+
+</ion-view>
